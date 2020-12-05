@@ -1,9 +1,5 @@
 // START: IMPORTS
-const READLINE = require('readline');
-const ASK = READLINE.createInterface({
-  input:process.stdin,
-  output: process.stdout
-});
+const ASK = require('readline-sync');
 // END: IMPORTS
 
 // START: FUNCTIONS
@@ -25,52 +21,43 @@ const ASK = READLINE.createInterface({
 
   // Start: Set Activity Detail
   function setDetail(details){
-    let displayDetail = "";
+    let displayDetail = '';
     let isDefaultDetail = true;
+    let isUsePresetDetails = true;
 
-    ASK.question("\nWould you like to choose your own detail? (Y/n): ", (answer) => {
-      console.log(answer);
-      this.answer = answer;
-      let isDefaultDetail = answer.toLowerCase() == 'y' ?  true : false;
-      console.log(isDefaultDetail);
-      return isDefaultDetail;
-    })
+    let qSetOwnDetail = ASK.question("\nWould you like to choose your own detail? (Y/n): ");
+    isDefaultDetail = qSetOwnDetail.toLowerCase() == 'y' ?  false : true;
 
-    // qSetOwnDetail = input('\nWould you like to choose your own detail? (Y/n): ')
-    // isDefaultDetail = False if qSetOwnDetail.lower() == 'y' else True;
+    // IF: DEFAULT DETAIL
+    if (isDefaultDetail){
+        displayDetail = details[0];
+    }  
 
-    // // IF: DEFAULT DETAIL
-    // if (isDefaultDetail){
-    //     displayDetail = details[0]
-    // }  
-    // // END: DEFAULT DETAIL
+    // ELSE: CHOOSE OWN DETAIL
+    else{
+      let qUsePresetDetails = ASK.question('> Use Preset Details? (Y/n): ');
+      isUsePresetDetails = qUsePresetDetails.toLowerCase() == 'y' ?  true : false;
 
-    // // # IF: CHOOSE OWN DETAIL
-    // else{
-    //     qUsePresetDetails = input(
-    //         '> Use Preset Details? (Y/n): ')
-    //     isUsePresetDetails = True if qUsePresetDetails.lower() == 'y' else False
-    //     // # START: USE PRESET DETAIL
-    //     if (isUsePresetDetails){
-    //       listDetails(details)
-    //       getWhichDetail = input(
-    //             ':: Enter the number of your chosen detail?: ')
-    //       displayDetail = details[int(getWhichDetail)-1]
-    //     }
-    //     // # END: USE PRESET DETAIL
+      // START: USE PRESET DETAIL
+      if (isUsePresetDetails){
+        listDetails(details);
+        let getWhichDetail = ASK.question(':: Enter the number of your chosen detail?: ')
+        displayDetail = details[parseInt(getWhichDetail)-1]
+      }
+      // # END: USE PRESET DETAIL
 
-    //     // # START: TYPE OWN DETAIL
-    //     else{
-    //       qWhatDetail = input(':: Enter Detail: ')
-    //       displayDetail = qWhatDetail
-    //     }
-    //     // # END: TYPE OWN DETAIL
-    // }
-    // // # END: CHOOSE OWN DETAIL
-    // // # END: CONDITIONAL SETTING DETAIL LOGIC
-    // console.log('::👌 Ayt Got It!!!');
-    // console.log("\n- - - - - - - - - -");
-    // return displayDetail;
+      // # START: TYPE OWN DETAIL
+      else{
+        let qWhatDetail = ASK.question(':: Enter Detail: ');
+        displayDetail = qWhatDetail;
+      }
+      // # END: TYPE OWN DETAIL
+    }
+    // # END: CHOOSE OWN DETAIL
+    // # END: CONDITIONAL SETTING DETAIL LOGIC
+    console.log('::👌 Ayt Got It!!!');
+    console.log("\n- - - - - - - - - -");
+    return(displayDetail);
   }
   // End: Set Activity Detail
 // END: FUNCTIONS

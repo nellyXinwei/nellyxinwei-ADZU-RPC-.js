@@ -28,7 +28,6 @@ const states = [
 // END: ACTIVITY STATES DATA
 
 layout.start();
-detail.setDetail(details);
-detail.listDetails(details);
-layout.run('Hello','World');
+const displayDetail = detail.setDetail(details);
+layout.run(displayDetail, 'Hello World');
 
