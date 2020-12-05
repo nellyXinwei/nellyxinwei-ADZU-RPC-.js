@@ -16,15 +16,12 @@
 
 ### Instructions:
 
-> STILL IN EARLY DEV HEHE, SO NOT YET :/
+> Git clone repo and cd to the repo on terminal
+> Run "node ." or "node index.js" on cli
 
 ### Updates:
 
-> No Customisability Yet and CLI Feature
-
-### Problems:
-
-> No Broken Pipe Problem Tho ;)
-> No CLI Version Yet
+> CLI app with options to customise text displayed on ur rich presences
+> Plan: Turn this to desktop util app with electron framework + database (for now preset datas are in the file mismo hehe)
 
 Inspired from my python version of this app but just taught of making a js version of it hehe.
