@@ -1,4 +1,4 @@
-const RPC = required('discord-rpc');
+const RPC = require('discord-rpc');
 const rpc = new RPC.Client({
   transport: 'ipc',
 });
@@ -7,18 +7,18 @@ const rpc = new RPC.Client({
 rpc.on('ready',() => {
   // Set Activity of User
   rpc.setActivity({
-    details: 'details',
-    state:'state',
+    details: 'TestNewDetail',
+    state:'TestNewState',
     startTimestamp: new Date(),
-    largeImageKey:'largeIcon',
-    largeImageText:'largeImageText',
-    smallImageKey:'smallIcon',
-    smallImageText:'smallImageText'
+    largeImageKey:'adzu',
+    largeImageText:'Ateneo de Zoom University🦅',
+    smallImageKey:'adzu_bird',
+    smallImageText:'ADZU🦅'
   });
   console.log("Running Rich Presence")
 });
 
 // Login Function
 rpc.login({
-  clientId:'clientId'
+  clientId:'783396264431452190'
 })
