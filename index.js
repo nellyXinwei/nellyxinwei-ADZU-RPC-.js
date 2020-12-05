@@ -1,24 +1,39 @@
-const RPC = require('discord-rpc');
-const rpc = new RPC.Client({
-  transport: 'ipc',
-});
+// START: IMPORTS
+const layout = require('./layout');
+const detail = require('./activityDetail');
+const state = require('./activityState');
+const rpc = require('./rpc');
+// END: IMPORTS
 
-// Create Event: Ready
-rpc.on('ready',() => {
-  // Set Activity of User
-  rpc.setActivity({
-    details: 'TestNewDetail',
-    state:'TestNewState',
-    startTimestamp: new Date(),
-    largeImageKey:'adzu',
-    largeImageText:'Ateneo de Zoom University🦅',
-    smallImageKey:'adzu_bird',
-    smallImageText:'ADZU🦅'
-  });
-  console.log("Running Rich Presence")
-});
 
-// Login Function
-rpc.login({
-  clientId:'783396264431452190'
-})
+// START: ACTIVITY DETAILS DATA
+const details = [
+    "🦅 ADZU-Ateneo de Zoom University",
+    "🇵🇭 FILI12(FF)-Panitikan ng Pilipinas",
+    "📐 MATH21(G)-University Precalculus",
+    "🦅 INTACT11(O2)-Introduction to Ateneo Culture and Traditions",
+    "💻 CSCI21(B)-Introduction to Programming I"
+]
+// END: ACTIVITY DETAILS DATA
+
+// START: ACTIVITY STATES DATA
+const states = [
+    "🏫 A/Sync Academics",
+    "🎥 Having Synchronous Class",
+    "📚 Doing Asynchronous Stuff",
+    "⛔ DO NOT DISTURB",
+    "😛 SLACKING OFF",
+    "🥴 NOT LISTENING",
+    "🧐 PRODUCTIVE",
+    "👻 DYING"
+]
+// END: ACTIVITY STATES DATA
+
+layout.start();
+const displayDetail = detail.setDetail(details);
+const displayState = state.setState(states);
+layout.run(displayDetail, displayState);
+
+// START: START DISCORD RPC
+rpc.startDiscordRPC(displayDetail, displayState);
+// END: START DISCORD RPC
