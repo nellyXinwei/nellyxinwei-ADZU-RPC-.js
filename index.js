@@ -1,6 +1,8 @@
 // START: IMPORTS
 const layout = require('./layout');
 const detail = require('./activityDetail');
+const state = require('./activityState');
+const rpc = require('./rpc');
 // END: IMPORTS
 
 
@@ -29,5 +31,9 @@ const states = [
 
 layout.start();
 const displayDetail = detail.setDetail(details);
-layout.run(displayDetail, 'Hello World');
+const displayState = state.setState(states);
+layout.run(displayDetail, displayState);
 
+// START: START DISCORD RPC
+rpc.startDiscordRPC(displayDetail, displayState);
+// END: START DISCORD RPC

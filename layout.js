@@ -13,7 +13,6 @@ function run(displayDetail, displayState){
     console.log(".......................................")
     console.log("\n \n Starting ADZU Discord-RPC...")
     console.log(".......................................")
-    console.log("ADZU Discord-RPC Connection Successful!")
     console.log("\n")
     console.log("Curently Running...")
     console.log("Ateneo de Zoom University 🦅")

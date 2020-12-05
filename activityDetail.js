@@ -3,21 +3,21 @@ const ASK = require('readline-sync');
 // END: IMPORTS
 
 // START: FUNCTIONS
-  // Start: List Details
+  // Start: List Preset Details
   function listDetails(details){
     console.log("\n- - - - - - - - - -")
     console.log("List of Details:: ")
     
     this.details = details;
     let order = 0
-    details.forEach(each_detail => {
+    details.forEach(eachDetail => {
       order++;
-      console.log(order.toString() + ' - ' + each_detail);
+      console.log(order.toString() + ' - ' + eachDetail);
     });
 
     console.log("- - - - - - - - - -")
   }
-  // End: List Details
+  // End: List Preset Details
 
   // Start: Set Activity Detail
   function setDetail(details){
@@ -41,8 +41,8 @@ const ASK = require('readline-sync');
       // START: USE PRESET DETAIL
       if (isUsePresetDetails){
         listDetails(details);
-        let getWhichDetail = ASK.question(':: Enter the number of your chosen detail?: ')
-        displayDetail = details[parseInt(getWhichDetail)-1]
+        let qWhichDetail = ASK.question(':: Enter the number of your chosen detail?: ')
+        displayDetail = details[parseInt(qWhichDetail)-1]
       }
       // # END: USE PRESET DETAIL
 
@@ -63,5 +63,5 @@ const ASK = require('readline-sync');
 // END: FUNCTIONS
 
 // START: EXPORTS
-module.exports = {setDetail,listDetails};
+module.exports = {setDetail};
 // END: EXPORTS

@@ -8,22 +8,30 @@ const rpc = new RPC.Client({
   transport: 'ipc',
 });
 
-// Create Event: Ready
-rpc.on('ready',() => {
-  // Set Activity of User
-  rpc.setActivity({
-    details: 'CODING PROJECTS',
-    state:'Deving ADZU Bot',
-    startTimestamp: new Date(),
-    largeImageKey:'adzu',
-    largeImageText:'Ateneo de Zoom University🦅',
-    smallImageKey:'adzu_bird',
-    smallImageText:'ADZU🦅'
-  });
-  console.log("Running Rich Presence")
-});
+function startDiscordRPC(displayDetail,displayState){
+  this.displayDetail = displayDetail;
+  this.displayState = displayState;
 
-// Login Function
-rpc.login({
-  clientId:'783396264431452190'
-})
+  // Create Event: Ready
+  rpc.on('ready',() => {
+    // Set Activity of User
+    rpc.setActivity({
+      details: displayDetail,
+      state: displayState,
+      startTimestamp: new Date(),
+      largeImageKey:'adzu',
+      largeImageText:'Ateneo de Zoom University🦅',
+      smallImageKey:'adzu_bird',
+      smallImageText:'ADZU🦅'
+    });
+    console.log("ADZU Discord-RPC Connection Successful!")
+  });
+
+  // Login Function
+  rpc.login({
+    clientId:'783396264431452190'
+  });
+
+}
+
+module.exports = { startDiscordRPC};
