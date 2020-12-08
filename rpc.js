@@ -30,8 +30,8 @@ function startDiscordRPC(displayDetail,displayState){
   // Login Function
   rpc.login({
     clientId:'783396264431452190'
-  });
+  }).catch(console.error);
 
 }
 
-module.exports = { startDiscordRPC};
+module.exports = { startDiscordRPC };
